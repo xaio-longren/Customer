@@ -13,29 +13,17 @@ public class Customer {
 	public void modify() {
 		if (order_Form.getName() == null) {
 			System.out.println("您还没有注册信息！");
-		} else {
-			System.out.println("请输入您的旧昵称：");
-			String name = input.next();
-			System.out.println("请输入您的旧电话号码");
-			String tel = input.next();
-			System.out.println("请输入您的旧送餐地址");
-			String addr = input.next();
-			if (order_Form.getName().equals(name) && order_Form.getTel().equals(tel)
-					&& order_Form.getAddr().equals(addr)) {
+		} else {		
 				System.out.println("请输入新的昵称：");
 				order_Form.setName(input.next());
 				System.out.println("请输入新的电话号码：");
 				order_Form.setTel(input.next());
 				System.out.println("请输入新的地址：");
 				order_Form.setAddr(input.next());
-
 				System.out.println("修改成功!");
-			} else {
-				System.out.println("输入信息与原有信息不符，修改失败！");
-			}
+			} 
 		}
-	}
-
+	
 	/**
 	 * 删除订单
 	 * 
@@ -43,7 +31,8 @@ public class Customer {
 	public void del() {
 		getForm();
 		if (order_Form.menu[0] != null) {
-			System.out.println("请输入要删除的订单序列号");
+			//为防止损害消费者权益，订单需签收才能删除
+			System.out.println("请输入要删除的订单序列号(先签收,后删除)");
 			int num = input.nextInt();
 			if (order_Form.states[num - 1] == 0) {
 				System.out.println("您选择的订单未签收,不可删除！");
@@ -165,4 +154,3 @@ public class Customer {
 		}
 	}
 }
-
